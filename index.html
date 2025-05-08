@@ -34,14 +34,14 @@
   </script>
 
   <!-- Navbar -->
-  <header class="bg-white shadow fixed top-0 left-0 w-full z-50 transition-all duration-300" data-aos="fade-down">
+  <header class="bg-white shadow fixed top-0 left-0 w-full z-50 transition-all duration-300" data-aos="fade-down" style="background-color: #061551">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-indigo-700">AgenciaX</h1>
+      <img src="img/forjixweblogo.png">
       <nav class="space-x-6">
-        <a href="#servicios" class="hover:text-indigo-600">Servicios</a>
-        <a href="#nosotros" class="hover:text-indigo-600">Nosotros</a>
-        <a href="#proyectos" class="hover:text-indigo-600">Proyectos</a>
-        <a href="#contacto" class="hover:text-indigo-600">Contacto</a>
+        <a href="#servicios" class="hover:text-indigo-600" style="color: white;">Servicios</a>
+        <a href="#nosotros" class="hover:text-indigo-600" style="color: white;">Nosotros</a>
+        <a href="#proyectos" class="hover:text-indigo-600" style="color: white;">Proyectos</a>
+        <a href="#contacto" class="hover:text-indigo-600" style="color: white;">Contacto</a>
       </nav>
     </div>
   </header>
@@ -51,9 +51,9 @@
   <!-- Hero -->
   <section class="bg-gray-100 py-20" data-aos="fade-up">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-4 text-indigo-700">Impulsamos tu transformación digital</h2>
-      <p class="text-lg mb-6 text-gray-700">Soluciones creativas y tecnológicas para startups y empresas</p>
-      <a href="#contacto" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700 transition">Trabaja con nosotros</a>
+      <h2 class="text-4xl font-bold mb-4 text-indigo-700">Forjix: Innovación, talento y tecnología a tu servicio</h2>
+      <p class="text-lg mb-6 text-gray-700">En Forjix, convertimos desafíos en soluciones. Somos una empresa de outsourcing y desarrollo de software a medida, conformada por un equipo de expertos con amplia experiencia en diversos sectores.
+        Confía en nosotros para construir el futuro digital de tu empresa.</p>
     </div>
   </section>
 
@@ -119,21 +119,44 @@
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="bg-indigo-900 text-white py-20">
-    <div class="container mx-auto px-4">
-      <h3 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Hablemos</h3>
-      <form class="max-w-xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="100">
-        <input type="text" placeholder="Nombre" class="w-full p-3 rounded bg-white text-gray-800" />
-        <input type="email" placeholder="Email" class="w-full p-3 rounded bg-white text-gray-800" />
-        <textarea rows="5" placeholder="Mensaje" class="w-full p-3 rounded bg-white text-gray-800"></textarea>
-        <button type="submit" class="bg-indigo-600 px-6 py-3 rounded text-white font-semibold hover:bg-indigo-700">Enviar mensaje</button>
+  <section id="contacto" class="bg-indigo-900 text-white py-10 flex items-center justify-center">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-8" data-aos="fade-up">Contáctanos</h3>
+      <form class="max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex flex-col gap-4">
+          <div>
+            <!-- Correo -->
+            <a href="mailto:contacto@forjix.tech" class="flex items-center gap-2 text-black-600 hover:text-gray-500 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z" />
+              </svg>
+              contacto@forjix.tech
+            </a>
+          </div>
+          <div>
+            <!-- Teléfono -->
+            <a href="tel:+51954459027" class="flex items-center gap-2 text-black-600 hover:text-gray-500 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h1.38a2 2 0 011.79 1.11l1.43 2.87a2 2 0 01-.45 2.33L8.1 10.9a16.001 16.001 0 006.9 6.9l1.6-1.05a2 2 0 012.33-.45l2.87 1.43A2 2 0 0121 19.62V21a2 2 0 01-2 2h-1C9.163 23 1 14.837 1 5V4a2 2 0 012-2z" />
+              </svg>
+              (+51) 954 459 027
+            </a>
+          </div>
+          <div class="flex items-center gap-2 text-black-600 justify-center">
+            <!-- Dirección -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm0 10s7-6.5 7-11.5S15.5 2 12 2 5 5.5 5 9.5 12 21 12 21z" />
+            </svg>
+            Av. Gregorio Escobedo 570 - Jesús María, Lima
+          </div>
+        </div>
       </form>
     </div>
-  </section>
+  </section>  
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center" data-aos="fade-up">
-    <p>&copy; 2025 AgenciaX. Todos los derechos reservados.</p>
+  <footer class="bg-gray-800 text-white py-6 text-center" style="background-color: #061551">
+    <p>© Forjix 2025</p>
   </footer>
 </body>
 </html>
