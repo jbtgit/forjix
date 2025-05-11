@@ -9,6 +9,10 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Agrega esto en el <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <style>
     :root {
       --primary: #5a67d8;
@@ -20,10 +24,147 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    /* Estilos para el menú hamburguesa */
+    .hamburger {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      transition: all 0.25s;
+      position: relative;
+      display: none; /* Oculto por defecto, se muestra en móviles */
+    }
+    
+    .hamburger-top,
+    .hamburger-middle,
+    .hamburger-bottom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      background: white;
+      transform: rotate(0);
+      transition: all 0.5s;
+    }
+    
+    .hamburger-middle {
+      transform: translateY(7px);
+    }
+    
+    .hamburger-bottom {
+      transform: translateY(14px);
+    }
+    
+    .open .hamburger-top {
+      transform: rotate(45deg) translateY(6px) translateX(6px);
+    }
+    
+    .open .hamburger-middle {
+      display: none;
+    }
+    
+    .open .hamburger-bottom {
+      transform: rotate(-45deg) translateY(6px) translateX(-6px);
+    }
+    
+    /* Menú móvil */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background-color: #061551;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+    }
+    
+    .mobile-menu.open {
+      display: block;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Mostrar hamburguesa en móviles y ocultar menú normal */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      nav.desktop-nav {
+        display: none;
+      }
+    }
+    
+    /* Solución para el espacio en blanco en móviles */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+	/* Estilos botom back to top*/
+	.back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  /* Estilos para el carrusel de proyectos en móviles */
+  @media (max-width: 767px) {
+  .swiper-container-proyectos {
+    overflow: hidden;
+    padding-bottom: 40px; /* Espacio para paginación */
+  }
+  
+  .swiper-slide {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+  
+  .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+  }
+  
+  .swiper-pagination {
+    bottom: 10px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    background: rgba(255,255,255,0.5);
+    width: 10px;
+    height: 10px;
+    margin: 0 5px !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: white;
+    width: 12px;
+    height: 12px;
+  }
+}
   </style>
 </head>
 <body class="bg-white text-gray-800 scroll-smooth">
-  <script>
+   <script>
     AOS.init();
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
@@ -33,18 +174,136 @@
         header.classList.remove('scrolled');
       }
     });
+    
+    // Funcionalidad del menú hamburguesa
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+        document.body.classList.toggle('no-scroll');
+      });
+      
+      // Cerrar menú al hacer clic en un enlace
+      const mobileLinks = document.querySelectorAll('.mobile-menu a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          document.body.classList.remove('no-scroll');
+        });
+      });
+    });
+	 // Botón "Volver al inicio"
+    document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (backToTopButton) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+      
+      backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+  /*Crusel*/
+// Carrusel mejorado con reinicio automático infinito
+document.addEventListener('DOMContentLoaded', function() {
+  let swiperInstance = null;
+  
+  function initCarousel() {
+    // Destruir instancia previa si existe
+    if (swiperInstance !== null) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+    
+    // Solo inicializar en móviles
+    if (window.innerWidth < 768) {
+      swiperInstance = new Swiper('.swiper-container-proyectos', {
+        slidesPerView: 1, // Mostrar solo 1 slide a la vez
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+        loopAdditionalSlides: 4, // Slides adicionales para loop fluido
+        speed: 600, // Velocidad de transición
+        autoplay: {
+          delay: 3000, // 3 segundos entre slides
+          disableOnInteraction: false, // No se detiene al interactuar
+          pauseOnMouseEnter: false // No pausar al pasar el mouse
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true
+        },
+        // Configuración para evitar el warning
+        loopPreventsSliding: true,
+        loopFillGroupWithBlank: false,
+        // Manejo de errores
+        on: {
+          init: function() {
+            // Forzar inicio del autoplay
+            this.autoplay.start();
+          },
+          loopFix: function() {
+            // Solución para problemas de loop
+            this.slideTo(this.activeIndex, 0, false);
+          }
+        }
+      });
+    }
+  }
+  
+  // Inicializar al cargar
+  initCarousel();
+  
+  // Reinicializar al cambiar tamaño
+  window.addEventListener('resize', function() {
+    setTimeout(initCarousel, 250);
+  });
+});
   </script>
 
   <!-- Navbar -->
   <header class="bg-white shadow fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background-color: #061551">
     <div class="container mx-auto px-4 py-6 flex justify-between items-center">
       <img src="img/forjixweblogo.png" class="h-10">
-      <nav class="space-x-6">
+      
+      <!-- Menú normal (desktop) -->
+      <nav class="desktop-nav space-x-6">
         <a href="#servicios" class="hover:text-indigo-300 text-white">Servicios</a>
         <a href="#nosotros" class="hover:text-indigo-300 text-white">Nosotros</a>
         <a href="#proyectos" class="hover:text-indigo-300 text-white">Proyectos</a>
         <a href="#contacto" class="hover:text-indigo-300 text-white">Contacto</a>
       </nav>
+      
+      <!-- Botón hamburguesa (mobile) -->
+      <button class="hamburger focus:outline-none">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+    
+    <!-- Menú móvil -->
+    <div class="mobile-menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </header>
 
@@ -126,13 +385,13 @@
   </div>
 </section>
 
-  <!-- Proyectos -->
-  <section id="proyectos" class="py-10" style="background-color: rgba(6, 21, 81, 0.98);">
+ <!-- Proyectos -->
+<section id="proyectos" class="py-10" style="background-color: rgba(6, 21, 81, 0.98);">
   <div class="container mx-auto px-4">        
     <h3 class="text-4xl font-bold mb-16 text-center text-white" data-aos="fade-up">¿Qué dicen de nosotros?</h3>
-        
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">    
-
+    
+     <!-- Versión Desktop (grid) -->
+    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10">
       <!-- Proyecto 1 -->
       <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition" data-aos="fade-up" style="background-color: rgba(6, 21, 81);">
         <img src="img/311.jpg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="311" />
@@ -153,7 +412,67 @@
         <h4 class="text-lg font-semibold text-white mb-2 text-center">Bonjour Boutique</h4>
         <p class="text-white text-sm text-center">"FORJIX transformó la gestión de nuestra boutique con una solución digital que optimizó inventario, ventas y atención al cliente. Su plataforma eficiente y fácil de usar mejoró nuestra organización y nos prepara para crecer. ¡Totalmente agradecidos!"</p>
       </div>
-
+    </div>
+    
+    <!-- Versión Móvil (carrusel) -->
+<div class="md:hidden swiper-container-proyectos">
+  <div class="swiper-wrapper">
+    <!-- Slide original 1 -->
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/311.jpg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="311" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">311 Arquitectura & Diseño</h4>
+        <p class="text-white text-sm text-center">"FORJIX desarrolló una solución digital..."</p>
+      </div>
+    </div>
+    
+    <!-- Slide original 2 -->
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/Congar.jpeg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="GONCAR" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">GONCAR - Soluciones Contables</h4>
+        <p class="text-white text-sm text-center">"Gracias a FORJIX, integramos nuestro sistema..."</p>
+      </div>
+    </div>
+    
+    <!-- Slide original 3 -->
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/Bonjour.jpg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="Bonjour" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">Bonjour Boutique</h4>
+        <p class="text-white text-sm text-center">"FORJIX transformó la gestión de nuestra boutique..."</p>
+      </div>
+    </div>
+    
+    <!-- Duplicados (ESENCIALES para el loop) -->
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/311.jpg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="311" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">311 Arquitectura & Diseño</h4>
+        <p class="text-white text-sm text-center">"FORJIX desarrolló una solución digital..."</p>
+      </div>
+    </div>
+    
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/Congar.jpeg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="GONCAR" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">GONCAR - Soluciones Contables</h4>
+        <p class="text-white text-sm text-center">"Gracias a FORJIX, integramos nuestro sistema..."</p>
+      </div>
+    </div>
+    
+    <div class="swiper-slide p-4">
+      <div class="bg-white p-6 rounded-2xl shadow-md transition" style="background-color: rgba(6, 21, 81);">
+        <img src="img/Bonjour.jpg" class="rounded-full w-16 h-16 mx-auto mb-4" alt="Bonjour" />
+        <h4 class="text-lg font-semibold text-white mb-2 text-center">Bonjour Boutique</h4>
+        <p class="text-white text-sm text-center">"FORJIX transformó la gestión de nuestra boutique..."</p>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination mt-4"></div>
+</div>z-0z
+      <!-- Paginación -->
+      <div class="swiper-pagination mt-4"></div>
     </div>
   </div>
 </section>
@@ -204,8 +523,14 @@
       </form>
     </div>
   
-  </section>    
+  </section>  
 
+ <!-- Botón "Volver al inicio" -->
+<button id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-[#061551] text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-6 text-center" style="background-color: #061551">
     <p>© Forjix 2025</p>
