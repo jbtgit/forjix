@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,110 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
+=======
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forjix – Innovación, talento y tecnología a tu servicio</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Agrega esto en el <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #5a67d8;
+      --secondary: #edf2f7;
+      --accent: #4c51bf;
+    }
+    .scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Estilos para el menú hamburguesa */
+    .hamburger {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      transition: all 0.25s;
+      position: relative;
+      display: none; /* Oculto por defecto, se muestra en móviles */
+    }
+    
+    .hamburger-top,
+    .hamburger-middle,
+    .hamburger-bottom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      background: white;
+      transform: rotate(0);
+      transition: all 0.5s;
+    }
+    
+    .hamburger-middle {
+      transform: translateY(7px);
+    }
+    
+    .hamburger-bottom {
+      transform: translateY(14px);
+    }
+    
+    .open .hamburger-top {
+      transform: rotate(45deg) translateY(6px) translateX(6px);
+    }
+    
+    .open .hamburger-middle {
+      display: none;
+    }
+    
+    .open .hamburger-bottom {
+      transform: rotate(-45deg) translateY(6px) translateX(-6px);
+    }
+    
+    /* Menú móvil */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background-color: #061551;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 50;
+    }
+    
+    .mobile-menu.open {
+      display: block;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      color: white;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Mostrar hamburguesa en móviles y ocultar menú normal */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+>>>>>>> fc7a96c18a9af67e8f507537f57229e8795d1a06
       }
     </style>
   </head>
